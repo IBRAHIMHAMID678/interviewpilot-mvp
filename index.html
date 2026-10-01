@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InterviewPilot — AI Interview Coach (MVP)</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="bg"></div>
+<main class="wrap">
+
+  <!-- ============ SETUP ============ -->
+  <section id="screen-setup" class="card">
+    <div class="brand"><span class="logo">◉</span> InterviewPilot <em>MVP</em></div>
+    <h1>Practice interviews.<br>Get scored. <span class="accent">Get hired.</span></h1>
+    <p class="sub">A free AI interview coach. Pick a role and a round, answer timed questions out loud or in writing, then score yourself against the rubric interviewers actually use.</p>
+    <div class="grid2">
+      <label>Role
+        <select id="role"></select>
+      </label>
+      <label>Round
+        <select id="round">
+          <option>Behavioral</option>
+          <option>Technical</option>
+          <option>System Design</option>
+        </select>
+      </label>
+    </div>
+    <label class="check"><input type="checkbox" id="voiceToggle" checked> Enable voice input (browser speech recognition, if available)</label>
+    <button id="startBtn" class="btn primary">Start mock interview →</button>
+    <p class="fine">No account. No data leaves your browser. MVP — full version adds Llama 3 feedback via Ollama.</p>
+  </section>
+
+  <!-- ============ QUESTION ============ -->
+  <section id="screen-question" class="card hidden">
+    <div class="topbar">
+      <div><span id="qMeta" class="meta"></span></div>
+      <div id="timer" class="timer">03:00</div>
+    </div>
+    <div class="progress"><div id="pbar"></div></div>
+    <h2 id="qText"></h2>
+    <p class="hint" id="qTip"></p>
+    <div class="answerRow">
+      <textarea id="answer" rows="6" placeholder="Type your answer here — structure beats length."></textarea>
+      <button id="micBtn" class="btn ghost hidden" title="Dictate your answer">🎙 Dictate</button>
+    </div>
+    <div class="row">
+      <button id="skipBtn" class="btn ghost">Skip</button>
+      <button id="submitBtn" class="btn primary">Submit answer →</button>
+    </div>
+  </section>
+
+  <!-- ============ FEEDBACK ============ -->
+  <section id="screen-feedback" class="card hidden">
+    <div class="topbar"><span id="fMeta" class="meta"></span><span class="pill">Model answer</span></div>
+    <h2 id="fQ"></h2>
+    <div class="model"><div class="modelHead">What a strong answer covers</div><p id="fModel"></p></div>
+    <h3>Score yourself honestly (1–5)</h3>
+    <div id="sliders"></div>
+    <div class="row">
+      <button id="nextBtn" class="btn primary">Next question →</button>
+    </div>
+  </section>
+
+  <!-- ============ REPORT ============ -->
+  <section id="screen-report" class="card hidden">
+    <div class="brand"><span class="logo">◉</span> InterviewPilot <em>session report</em></div>
+    <h1>Your session <span class="accent" id="rScore"></span></h1>
+    <p class="sub" id="rSummary"></p>
+    <div id="rDims"></div>
+    <h3>Your prep plan</h3>
+    <ol id="rPlan" class="plan"></ol>
+    <div class="row">
+      <button id="againBtn" class="btn ghost">↺ New session</button>
+      <button id="retryBtn" class="btn primary">Drill weakest round again →</button>
+    </div>
+  </section>
+
+</main>
+<script src="app.js"></script>
+</body>
+</html>
